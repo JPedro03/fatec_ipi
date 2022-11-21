@@ -1,0 +1,50 @@
+<div class="grid">
+  <div class="col-6 col-offset-3">
+    <p-tabView>
+      <p-tabPanel header="Pesquisar" leftIcon="pi pi-search">
+        <div>
+          <input type="text" pInputText placeholder="Cidade Desejada" [(ngModel)]="cidade" /> 
+          <button pButton class="p-element p-ripple p-button-outlined p-button p-component" type="button" label="Pesquisar" (click)="pesquisar()"></button>
+          <br><br>
+          <h1>Previsão do tempo (Próximas horas)</h1>
+          <br>
+          <p-table>
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Icone</th>
+                <th>Temperatura Mínima</th>
+                <th>Temperatura Máxima</th>
+                <th>Data</th>
+              </tr>
+              <tr *ngFor="let p of previsoes">
+                <td align="center"><img src="http://openweathermap.org/img/wn/02n.png"></td>
+                <td align="center">{{p.main.temp_min}}</td>
+                <td align="center">{{p.main.temp_max}}</td>
+                <td align="center">{{p.dt_txt}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+        <br>
+      </p-tabPanel>
+      <p-tabPanel header="Histórico" leftIcon="pi pi-list">
+        <p-table>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Cidade</th>
+              <th>Clima</th>
+            </tr>
+            <tr *ngFor="let h of historico">
+              <td align="center">{{h.cidade}}</td>
+              <td align="center"><img src={{h.link_previsao}}></td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <button pButton type="button" label="Atualizar" (click)="consultarHistorico()">
+        </button>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>
+
+
