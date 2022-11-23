@@ -21,19 +21,19 @@ export class PrevisoesService {
 
   }
 
-  obterPrevisoes (cidade: string, data : string) : void {
+  obterPrevisoes (cidade: string) : void {
     this.url =
       `${this.url}&q=${cidade}&appid=${this.appid}`
     this.httpClient.get(this.url).subscribe((resposta: any) => {
       const icon = resposta.list[0].weather[0].icon
       const icon_url = `http://openweathermap.org/img/wn/${icon}.png`
-      this.armazenarNoHistorico(cidade, data, icon_url)
+      this.armazenarNoHistorico(cidade, icon_url)
       this.previsoesSubject.next(resposta)
     })
   }
-  armazenarNoHistorico(cidade: string, data: string, link: string){
+  armazenarNoHistorico(cidade: string, link: string){
     const linkOracle = "https://g3e99fc358a3389-jp1k665t7zehy4vs.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/paoo_previsoes/"
-    this.httpClient.post(linkOracle, {cidade: cidade, data_previsao : data, link_previsao: link}).subscribe(res => {
+    this.httpClient.post(linkOracle, {cidade: cidade, link_previsao: link}).subscribe(res => {
     })
   }
   consultarHistorico(){

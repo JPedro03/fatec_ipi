@@ -34,14 +34,13 @@
               <th>Cidade</th>
               <th>Clima</th>
             </tr>
+            <button pButton class="p-element p-ripple p-button-outlined p-button p-component" type="button" label="Atualizar" (click)="consultarHistorico()"></button>
             <tr *ngFor="let h of historico">
               <td align="center">{{h.cidade}}</td>
               <td align="center"><img src={{h.link_previsao}}></td>
             </tr>
           </ng-template>
         </p-table>
-        <button pButton type="button" label="Atualizar" (click)="consultarHistorico()">
-        </button>
       </p-tabPanel>
     </p-tabView>
   </div>

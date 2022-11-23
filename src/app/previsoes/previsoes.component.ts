@@ -1,4 +1,3 @@
-import { NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { PrevisoesService } from '../previsoes.service';
 
@@ -12,9 +11,7 @@ export class PrevisoesComponent implements OnInit{
   previsoes: any;
   historico: any;
   url_icon: string;
-  data : string = Date()
-  // now : Date = new Date();
-  // data : string = String(this.now.toLocaleString);
+  data : string = Date();
 
   ngOnInit(): void{
     this.previsoesService
@@ -33,11 +30,11 @@ export class PrevisoesComponent implements OnInit{
   }
 
   pesquisar() : void {
-    this.previsoesService.obterPrevisoes(this.cidade, this.data)
+    this.previsoesService.obterPrevisoes(this.cidade)
   }
 
   armazenarNoHistorico(){
-    this.previsoesService.armazenarNoHistorico(this.cidade, null, "link de teste")
+    this.previsoesService.armazenarNoHistorico(this.cidade, "link de teste")
   }
 
   consultarHistorico() : void{
